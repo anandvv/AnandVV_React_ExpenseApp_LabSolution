@@ -1,0 +1,66 @@
+Steps to create JSON server
+
+Step one
+========
+
+mkdir json-server-lib
+cd json-server-lib
+npm init -y
+npm i -g json-server
+npm install axios
+
+Step two
+========
+Add data to your database file
+Create a new file called db.json and add the contents to it
+
+Step three - Start the server
+=============================
+
+json-server --watch db.json --port 3002
+
+VALIDATE that it's working properly
+===================================
+
+GET -> http://localhost:3002/items
+GET -> http://localhost:3002/items/1
+
+Usage in the react application
+==============================
+
+const axios = require('axios');
+POST -> axios.post(url, {JSON}).then(resp => console.log(resp)));
+
+
+----------------------------------------------------------------
+
+Routers
+    -> Route -> path = "/" -> ShowData
+    -> Route -> path = "/add" -> ExpenseTracker
+
+ShowData
+    items -> database (items is a state variable)
+
+DataList interface
+    id: number,
+    product: string,
+    price: number,
+    payeeName: string,
+    setDate: string
+
+        data -> getDataFromServer
+            service.ts
+                getDataFromServer
+                    axios.get(http://localhost:3002/items).then(response => response.data);
+                pushDataToServer
+                    axios.post("http://localhost:3002/items", newPurchase, {headers: {
+                        'Content-Type': 'application/json'
+                    }}).then()
+
+        shares => data -> decide rahul/other person spent
+            user1spent
+            user2spent
+        
+
+
+
